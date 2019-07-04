@@ -121,7 +121,7 @@ rgl_add_axes <- function(x, y, z, axis.col = "grey",
 #'
 #' @export
 tib_xyz_to_mat <- function(tib){
-  prep_mat <- data %>%
+  prep_mat <- tib %>%
     tidyr::spread(key = 'y', value = 'z')
 
   export_mat <- prep_mat %>%
