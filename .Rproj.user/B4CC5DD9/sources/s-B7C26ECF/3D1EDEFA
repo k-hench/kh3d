@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1562245164820.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "729199145",
+    "id" : "3D1EDEFA",
+    "lastKnownWriteTime" : 1562254022,
+    "last_content_update" : 1562254022864,
+    "path" : "~/Schreibtisch/hypo_Rlab/kh3d/R/kh3d_basic.R",
+    "project_path" : "R/kh3d_basic.R",
+    "properties" : {
+        "cursorPosition" : "78,0",
+        "scrollLine" : "66"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

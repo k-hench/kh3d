@@ -1,0 +1,24 @@
+.onAttach <- function(libname, pkgname) {
+  cli::rule( center = str_c("Welcome to", crayon::green("kh3d")))
+}
+#' Initialize 3d plot
+#'
+#' \code{rgl_init} creates the 3d device.
+#'
+#' stolen from \link{http://www.sthda.com/english/wiki/a-complete-guide-to-3d-visualization-device-system-in-r-r-software-and-data-visualization}
+#'
+#'
+#' @examples
+#'
+#' rgl_init()
+#'
+#' @export
+rgl_init <- function(new.device = FALSE, bg = "white", width = 640) {
+  if( new.device | rgl.cur() == 0 ) {
+    rgl.open()
+    par3d(windowRect = 50 + c( 0, 0, width, width ) )
+    rgl.bg(color = bg )
+  }
+  rgl.clear(type = c("shapes", "bboxdeco"))
+  rgl.viewpoint(theta = 0, phi = -60, zoom = 1.2)
+}
