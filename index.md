@@ -3,6 +3,7 @@
 The **R** package **kh3d** provides helper scripts for 3d plotting
 using the **R** package **rgl**.
 
+*This package is still under construction...*
 
 ## Install
 
