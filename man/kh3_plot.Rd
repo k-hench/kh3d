@@ -4,14 +4,17 @@
 \alias{kh3_plot}
 \title{Plot xyz tibble in rgl}
 \usage{
-kh3_plot(data, color = "#084082ff", xlab = "", ylab = "",
-  zlab = "", aspect = c(8, 2, 1), style = c("surface", "points",
-  "lines"), shininess = 3)
+kh3_plot(data, color = "#084082ff", line_overlay = TRUE,
+  show_ticks = TRUE, xlab = "", ylab = "", zlab = "",
+  aspect = c(8, 2, 1), style = c("surface", "points", "lines"),
+  shininess = 3, theta = 0, phi = -80, zoom = 1.03, fov = 60)
 }
 \arguments{
 \item{data}{tibble with 3 columns (x, y, z), the data to be plotted.}
 
 \item{color}{color value, plotting color.}
+
+\item{line_overlay}{logical scalar, should lines be drawn ontop the 3d surface?}
 
 \item{xlab}{sting scalar, the x axis label.}
 

@@ -1,7 +1,7 @@
 Package: kh3d
 Type: Package
 Title: Custom rgl helpers 
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: person("Kosmas", "Hench", email="khench@posteo.net", role = c("aut", "cre"),
       comment = c(ORCID = "0000-0003-1119-187X"))
 Description: A selection of bits and pieces

@@ -5,7 +5,8 @@
 \title{Initialize 3d plot}
 \usage{
 rgl_init(new.device = FALSE, bg = "white", width = 640,
-  aspect = c(1, 1, 1))
+  aspect = c(1, 1, 1), theta = 0, phi = -80, zoom = 1.03,
+  fov = 60)
 }
 \description{
 \code{rgl_init} creates the 3d device.

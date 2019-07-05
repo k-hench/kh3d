@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kh3d</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9001</span>
       </span>
     </div>
 
@@ -107,9 +107,10 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>kh3_plot</span>(<span class='no'>data</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"#084082ff"</span>, <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>zlab</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>aspect</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>8</span>, <span class='fl'>2</span>, <span class='fl'>1</span>), <span class='kw'>style</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"surface"</span>, <span class='st'>"points"</span>,
-  <span class='st'>"lines"</span>), <span class='kw'>shininess</span> <span class='kw'>=</span> <span class='fl'>3</span>)</pre>
+    <pre class="usage"><span class='fu'>kh3_plot</span>(<span class='no'>data</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"#084082ff"</span>, <span class='kw'>line_overlay</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>show_ticks</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>zlab</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>aspect</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>8</span>, <span class='fl'>2</span>, <span class='fl'>1</span>), <span class='kw'>style</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"surface"</span>, <span class='st'>"points"</span>, <span class='st'>"lines"</span>),
+  <span class='kw'>shininess</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>theta</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>phi</span> <span class='kw'>=</span> -<span class='fl'>80</span>, <span class='kw'>zoom</span> <span class='kw'>=</span> <span class='fl'>1.03</span>, <span class='kw'>fov</span> <span class='kw'>=</span> <span class='fl'>60</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -121,6 +122,10 @@
     <tr>
       <th>color</th>
       <td><p>color value, plotting color.</p></td>
+    </tr>
+    <tr>
+      <th>line_overlay</th>
+      <td><p>logical scalar, should lines be drawn ontop the 3d surface?</p></td>
     </tr>
     <tr>
       <th>xlab</th>

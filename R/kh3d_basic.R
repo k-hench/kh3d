@@ -14,14 +14,14 @@
 #'
 #' @export
 rgl_init <- function(new.device = FALSE, bg = "white", width = 640,
-                     aspect = c(1,1,1)) {
+                     aspect = c(1,1,1), theta = 0, phi = -80, zoom = 1.03, fov = 60) {
   if( new.device | rgl.cur() == 0 ) {
     rgl.open()
     par3d(windowRect = 50 + c( 0, 0, width, width ) )
     rgl.bg(color = bg )
   }
   rgl.clear(type = c("shapes", "bboxdeco"))
-  rgl.viewpoint(theta = 0, phi = -80, zoom = 1.03)
+  rgl.viewpoint(theta = theta, phi = phi, zoom = zoom, fov = fov)
   aspect3d(aspect[1], aspect[2], aspect[3])
 }
 
@@ -143,6 +143,7 @@ tib_xyz_to_mat <- function(tib){
 #' @param aspect numeric vector of length 3, defining the plot aspect ratio.
 #' @param style string ('surface', 'points', 'lines'), plotting style.
 #' @param color color value, plotting color.
+#' @param line_overlay logical scalar, should lines be drawn ontop the 3d surface?
 #' @param xlab sting scalar, the x axis label.
 #' @param ylab sting scalar, the y axis label.
 #' @param zlab sting scalar, the z axis label.
@@ -166,18 +167,22 @@ tib_xyz_to_mat <- function(tib){
 #'
 #' @export
 kh3_plot <- function(data, color = '#084082ff',
+                     line_overlay = TRUE,
+                     show_ticks = TRUE,
                     xlab = '', ylab = '', zlab = '',
                     aspect = c(8, 2, 1),
                     style = c('surface', 'points', 'lines'),
-                    shininess = 3){
+                    shininess = 3,
+                    theta = 0, phi = -80, zoom = 1.03, fov = 60){
 
-  rgl_init(bg = rgb(.3,.3,.3), aspect = aspect)
+  rgl_init(bg = rgb(.3,.3,.3), aspect = aspect, theta = theta, phi = phi, zoom = zoom, fov = fov)
   rgl_add_axes(data$x, data$y, data$z,
                show.bbox = FALSE,
                xlab = xlab,
                ylab = ylab,
                zlab = zlab,
-               show.plane = FALSE)
+               show.plane = FALSE,
+               show.ticks = show_ticks)
 
   tib_mat<- data %>%
     tib_xyz_to_mat()
@@ -192,12 +197,12 @@ kh3_plot <- function(data, color = '#084082ff',
               smooth = FALSE,
               shininess = shininess,
               alpha = 0.9)
-
+    if (line_overlay) {
     surface3d(x, y, tib_mat,
               col = 'black',
               front = "lines",
               shininess = shininess,
-              alpha = 1)
+              alpha = 1)}
 
   } else if (style %in% c('points', 'lines')) {
 
