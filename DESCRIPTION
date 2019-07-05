@@ -7,6 +7,8 @@ Authors@R: person("Kosmas", "Hench", email="khench@posteo.net", role = c("aut", 
 Description: A selection of bits and pieces
      to plot genomic data in 3d.
 License: GPL-3 | file LICENSE
+URL: https://github.com/k-hench/kh3d
+BugReports: https://github.com/k-hench/kh3d/issues
 Encoding: UTF-8
 LazyData: true
 Imports: tidyverse, rgl
