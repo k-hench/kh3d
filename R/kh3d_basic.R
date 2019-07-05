@@ -68,9 +68,9 @@ rgl_add_axes <- function(x, y, z, axis.col = "grey",
             adj = c(0.5, -0.8), size = 2)
 
   if(show.ticks){
-    xbrks <- kh3_breaks(xlim,n = 3)$breaks[2:4]
-    ybrks <- kh3_breaks(ylim,n = 3)$breaks[2:4]
-    zbrks <- kh3_breaks(zlim,n = 3)$breaks[2:4]
+    xbrks <- kh3_breaks(xlim,n = 3)$breaks %>% .[between(.,xlim[1],xlim[2])]
+    ybrks <- kh3_breaks(ylim,n = 3)$breaks %>% .[between(.,ylim[1],ylim[2])]
+    zbrks <- kh3_breaks(zlim,n = 3)$breaks %>% .[between(.,zlim[1],zlim[2])]
 
     brks <- cbind(c(xbrks, rep(0,length(ybrks)), rep(0,length(zbrks))),
                   c(rep(0,length(xbrks)), ybrks,  rep(0,length(zbrks))),
@@ -166,16 +166,18 @@ tib_xyz_to_mat <- function(tib){
 #'                  shininess = 4)
 #'
 #' @export
-kh3_plot <- function(data, color = '#084082ff',
+kh3_plot <- function(data,
+                     color = '#084082ff',
+                     style = c('surface', 'points', 'lines'),
                      line_overlay = TRUE,
                      show_ticks = TRUE,
-                    xlab = '', ylab = '', zlab = '',
-                    aspect = c(8, 2, 1),
-                    style = c('surface', 'points', 'lines'),
-                    shininess = 3,
-                    theta = 0, phi = -80, zoom = 1.03, fov = 60){
+                     aspect = c(8, 2, 1),
+                     xlab = '', ylab = '', zlab = '',
+                     plot_bg = rgb(.3,.3,.3),
+                     shininess = 3,
+                     theta = 0, phi = -80, zoom = 1.03, fov = 60){
 
-  rgl_init(bg = rgb(.3,.3,.3), aspect = aspect, theta = theta, phi = phi, zoom = zoom, fov = fov)
+  rgl_init(bg = plot_bg, aspect = aspect, theta = theta, phi = phi, zoom = zoom, fov = fov)
   rgl_add_axes(data$x, data$y, data$z,
                show.bbox = FALSE,
                xlab = xlab,
@@ -209,8 +211,10 @@ kh3_plot <- function(data, color = '#084082ff',
     surface3d(x, y, tib_mat,
               col = color,
               front = style,
+              back = style,
               shininess = shininess,
               alpha = 1)
+
   }
 }
 

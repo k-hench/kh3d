@@ -78,6 +78,9 @@
   </a>
 </li>
 <li>
+  <a href="../articles/kh3d.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
@@ -107,10 +110,11 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>kh3_plot</span>(<span class='no'>data</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"#084082ff"</span>, <span class='kw'>line_overlay</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>show_ticks</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>zlab</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>aspect</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>8</span>, <span class='fl'>2</span>, <span class='fl'>1</span>), <span class='kw'>style</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"surface"</span>, <span class='st'>"points"</span>, <span class='st'>"lines"</span>),
-  <span class='kw'>shininess</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>theta</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>phi</span> <span class='kw'>=</span> -<span class='fl'>80</span>, <span class='kw'>zoom</span> <span class='kw'>=</span> <span class='fl'>1.03</span>, <span class='kw'>fov</span> <span class='kw'>=</span> <span class='fl'>60</span>)</pre>
+    <pre class="usage"><span class='fu'>kh3_plot</span>(<span class='no'>data</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"#084082ff"</span>, <span class='kw'>style</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"surface"</span>, <span class='st'>"points"</span>,
+  <span class='st'>"lines"</span>), <span class='kw'>line_overlay</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>show_ticks</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>aspect</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>8</span>, <span class='fl'>2</span>,
+  <span class='fl'>1</span>), <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>zlab</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>plot_bg</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/grDevices/topics/rgb'>rgb</a></span>(<span class='fl'>0.3</span>, <span class='fl'>0.3</span>,
+  <span class='fl'>0.3</span>), <span class='kw'>shininess</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>theta</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>phi</span> <span class='kw'>=</span> -<span class='fl'>80</span>, <span class='kw'>zoom</span> <span class='kw'>=</span> <span class='fl'>1.03</span>,
+  <span class='kw'>fov</span> <span class='kw'>=</span> <span class='fl'>60</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -124,8 +128,16 @@
       <td><p>color value, plotting color.</p></td>
     </tr>
     <tr>
+      <th>style</th>
+      <td><p>string ('surface', 'points', 'lines'), plotting style.</p></td>
+    </tr>
+    <tr>
       <th>line_overlay</th>
       <td><p>logical scalar, should lines be drawn ontop the 3d surface?</p></td>
+    </tr>
+    <tr>
+      <th>aspect</th>
+      <td><p>numeric vector of length 3, defining the plot aspect ratio.</p></td>
     </tr>
     <tr>
       <th>xlab</th>
@@ -138,14 +150,6 @@
     <tr>
       <th>zlab</th>
       <td><p>sting scalar, the z axis label.</p></td>
-    </tr>
-    <tr>
-      <th>aspect</th>
-      <td><p>numeric vector of length 3, defining the plot aspect ratio.</p></td>
-    </tr>
-    <tr>
-      <th>style</th>
-      <td><p>string ('surface', 'points', 'lines'), plotting style.</p></td>
     </tr>
     <tr>
       <th>shininess</th>
@@ -163,7 +167,7 @@
 <span class='no'>n_steps</span> <span class='kw'>&lt;-</span> <span class='fl'>31</span>
 <span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='fu'>tibble</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>2</span>*<span class='no'>pi</span>*(<span class='fl'>1</span>:<span class='no'>n_steps</span>)/<span class='no'>n_steps</span>,
                <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>x</span>) <span class='kw'>%&gt;%</span>
-  <span class='kw pkg'>purrr</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/purrr/topics/cross'>cross_df</a></span>() <span class='kw'>%&gt;%</span>
+  <span class='kw pkg'>purrr</span><span class='kw ns'>::</span><span class='fu'><a href='https://purrr.tidyverse.org/reference/cross.html'>cross_df</a></span>() <span class='kw'>%&gt;%</span>
   <span class='fu'>mutate</span>( <span class='kw'>z</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Trig'>sin</a></span>(<span class='no'>x</span>)*<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Trig'>sin</a></span>(<span class='no'>y</span>))
 
 <span class='no'>data</span> <span class='kw'>%&gt;%</span> <span class='fu'>kh3_plot</span>(<span class='no'>.</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>kh_clr</span>[<span class='fl'>2</span>],
